@@ -26,7 +26,7 @@ another segment when it becomes necessary to massage data in
 another way. This is the way of IO also."
 ```
 
-[Doug McIlroy. October 11, 1964](http://cm.bell-labs.com/who/dmr/mdmpipe.html)
+[Doug McIlroy. October 11, 1964](https://www.bell-labs.com/usr/dmr/www/mdmpipe.html)
 
 ![doug mcilroy](assets/mcilroy.png)
 
@@ -36,7 +36,7 @@ Streams come to us from the
 [earliest days of unix](http://www.youtube.com/watch?v=tc4ROCJYbm0)
 and have proven themselves over the decades as a dependable way to compose large
 systems out of small components that
-[do one thing well](http://www.faqs.org/docs/artu/ch01s06.html).
+[do one thing well](https://www.catb.org/~esr/writings/taoup/html/ch01s06.html).
 In unix, streams are implemented by the shell with `|` pipes.
 In node, the built-in
 [stream module](http://nodejs.org/docs/latest/api/stream.html)
@@ -49,14 +49,14 @@ Streams can help to
 [separate your concerns](http://www.c2.com/cgi/wiki?SeparationOfConcerns)
 because they restrict the implementation surface area into a consistent
 interface that can be
-[reused](http://www.faqs.org/docs/artu/ch01s06.html#id2877537).
+[reused](https://www.catb.org/~esr/writings/taoup/html/ch01s06.html#id2877537).
 You can then plug the output of one stream to the input of another and
 [use libraries](http://npmjs.org) that operate abstractly on streams to
 institute higher-level flow control.
 
 Streams are an important component of
-[small-program design](https://michaelochurch.wordpress.com/2012/08/15/what-is-spaghetti-code/)
-and [unix philosophy](http://www.faqs.org/docs/artu/ch01s06.html)
+[small-program design](https://web.archive.org/web/20140716013915/https://michaelochurch.wordpress.com/2012/08/15/what-is-spaghetti-code/)
+and [unix philosophy](https://www.catb.org/~esr/writings/taoup/html/ch01s06.html)
 but there are many other important abstractions worth considering.
 Just remember that [technical debt](http://c2.com/cgi/wiki?TechnicalDebt)
 is the enemy and to seek the best abstractions for the problem at hand.
@@ -131,7 +131,7 @@ server.listen(8000);
 ```
 
 Now our file is compressed for browsers that support gzip or deflate! We can
-just let [oppressor](https://github.com/substack/oppressor) handle all that
+just let [oppressor](https://www.npmjs.com/package/oppressor) handle all that
 content-encoding stuff.
 
 Once you learn the stream api, you can just snap together these streaming
@@ -782,7 +782,7 @@ $ curl -X POST -d 'beep=boop&dinosaur=trex' http://localhost:5005
 
 ## [duplexer](https://github.com/Raynos/duplexer)
 
-## [emit-stream](https://github.com/substack/emit-stream)
+## [emit-stream](https://www.npmjs.com/package/emit-stream)
 
 ## [invert-stream](https://github.com/dominictarr/invert-stream)
 
@@ -979,7 +979,7 @@ Note that the server in this example is just another node with the same
 privledges as the clients connected to it. The terms "client" and "server" here
 don't affect how the state synchronization proceeds, just who initiates the
 connection. Protocols with this property are often called symmetric protocols.
-See [dnode](https://github.com/substack/dnode) for another example of a
+See [dnode](https://www.npmjs.com/package/dnode) for another example of a
 symmetric protocol.
 
 ## [append-only](http://github.com/Raynos/append-only)
@@ -990,9 +990,9 @@ symmetric protocol.
 
 ## [request](https://github.com/mikeal/request)
 
-## [oppressor](https://github.com/substack/oppressor)
+## [oppressor](https://www.npmjs.com/package/oppressor)
 
-## [response-stream](https://github.com/substack/response-stream)
+## [response-stream](https://www.npmjs.com/package/response-stream)
 
 ***
 
@@ -1010,7 +1010,7 @@ symmetric protocol.
 
 ## [tar](https://github.com/creationix/node-tar)
 
-## [trumpet](https://github.com/substack/node-trumpet)
+## [trumpet](https://www.npmjs.com/package/node-trumpet)
 
 ## [JSONStream](https://github.com/dominictarr/JSONStream)
 
@@ -1020,7 +1020,7 @@ If you need to pass a large json collection through a slow connection or you
 have a json object that will populate slowly this module will let you parse data
 incrementally as it arrives.
 
-## [json-scrape](https://github.com/substack/json-scrape)
+## [json-scrape](https://www.npmjs.com/package/json-scrape)
 
 ## [stream-serializer](https://github.com/dominictarr/stream-serializer)
 
@@ -1028,13 +1028,13 @@ incrementally as it arrives.
 
 # browser streams
 
-## [shoe](https://github.com/substack/shoe)
+## [shoe](https://www.npmjs.com/package/shoe)
 
 ## [domnode](https://github.com/maxogden/domnode)
 
-## [sorta](https://github.com/substack/sorta)
+## [sorta](https://www.npmjs.com/package/sorta)
 
-## [graph-stream](https://github.com/substack/graph-stream)
+## [graph-stream](https://www.npmjs.com/package/graph-stream)
 
 ## [arrow-keys](https://github.com/Raynos/arrow-keys)
 
@@ -1046,18 +1046,18 @@ incrementally as it arrives.
 
 # html streams
 
-## [hyperstream](https://github.com/substack/hyperstream)
+## [hyperstream](https://www.npmjs.com/package/hyperstream)
 
 
 # audio streams
 
-## [baudio](https://github.com/substack/baudio)
+## [baudio](https://www.npmjs.com/package/baudio)
 
 # rpc streams
 
-## [dnode](https://github.com/substack/dnode)
+## [dnode](https://www.npmjs.com/package/dnode)
 
-[dnode](https://github.com/substack/dnode) lets you call remote functions
+[dnode](https://www.npmjs.com/package/dnode) lets you call remote functions
 through any kind of stream.
 
 Here's a basic dnode server:
@@ -1212,9 +1212,9 @@ TODO: the rest
 We can build a socket.io-style event emitter api over streams using some of the
 libraries mentioned earlier in this document.
 
-First  we can use [shoe](http://github.com/substack/shoe)
+First  we can use [shoe](https://www.npmjs.com/package/shoe)
 to create a new websocket handler server-side and
-[emit-stream](https://github.com/substack/emit-stream)
+[emit-stream](https://www.npmjs.com/package/emit-stream)
 to turn an event emitter into a stream that emits objects.
 The object stream can then be fed into
 [JSONStream](https://github.com/dominictarr/JSONStream)
@@ -1292,7 +1292,7 @@ ev.on('upper', function (msg) {
 });
 ```
 
-Use [browserify](https://github.com/substack/node-browserify) to build this
+Use [browserify](https://www.npmjs.com/package/node-browserify) to build this
 browser source code so that you can `require()` all these nifty modules
 browser-side:
 
@@ -1358,9 +1358,9 @@ module.exports = function () {
 };
 ```
 
-We can use [brfs](http://github.com/substack/brfs) to inline the
+We can use [brfs](https://www.npmjs.com/package/brfs) to inline the
 `fs.readFileSync()` call for browser code
-and [hyperglue](https://github.com/substack/hyperglue) to update html based on
+and [hyperglue](https://www.npmjs.com/package/hyperglue) to update html based on
 css selectors. You don't need to use hyperglue necessarily here; anything that
 can return a string with html in it will work.
 
@@ -1375,8 +1375,8 @@ row.html:
 </div>
 ```
 
-The server will just use [slice-file](https://github.com/substack/slice-file) to
-keep everything simple. [slice-file](https://github.com/substack/slice-file) is
+The server will just use [slice-file](https://www.npmjs.com/package/slice-file) to
+keep everything simple. [slice-file](https://www.npmjs.com/package/slice-file) is
 little more than a glorified `tail/tail -f` api but the interfaces map well to
 databases with regular results plus a changes feed like couchdb.
 
@@ -1416,10 +1416,10 @@ The first part of the server handles the `/` route and streams the last 5 lines
 from `data.txt` into the `#rows` div.
 
 The second part of the server handles realtime updates to `#rows` using
-[shoe](http://github.com/substack/shoe), a simple streaming websocket polyfill.
+[shoe](https://www.npmjs.com/package/shoe), a simple streaming websocket polyfill.
 
 Next we can write some simple browser code to populate the realtime updates
-from [shoe](http://github.com/substack/shoe) into the `#rows` div:
+from [shoe](https://www.npmjs.com/package/shoe) into the `#rows` div:
 
 ``` js
 var through = require('through');
@@ -1435,7 +1435,7 @@ stream.pipe(render()).pipe(through(function (html) {
 ```
 
 Just compile with [browserify](http://browserify.org) and
-[brfs](http://github.com/substack/brfs):
+[brfs](https://www.npmjs.com/package/brfs):
 
 ```
 $ browserify -t brfs browser.js > static/bundle.js
