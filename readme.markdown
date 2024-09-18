@@ -1,7 +1,7 @@
 # stream-handbook
 
 This document covers the basics of how to write [node.js](http://nodejs.org/)
-programs with [streams](http://nodejs.org/docs/latest/api/stream.html).     
+programs with [streams](http://nodejs.org/docs/latest/api/stream.html).
 You also could read a **[chinese edition](https://github.com/jabez128/stream-handbook)**
 
 [![cc-by-3.0](http://i.creativecommons.org/l/by/3.0/80x15.png)](http://creativecommons.org/licenses/by/3.0/)
@@ -28,7 +28,7 @@ another way. This is the way of IO also."
 
 [Doug McIlroy. October 11, 1964](http://cm.bell-labs.com/who/dmr/mdmpipe.html)
 
-![doug mcilroy](http://substack.net/images/mcilroy.png)
+![doug mcilroy](assets/mcilroy.png)
 
 ***
 
@@ -61,7 +61,7 @@ but there are many other important abstractions worth considering.
 Just remember that [technical debt](http://c2.com/cgi/wiki?TechnicalDebt)
 is the enemy and to seek the best abstractions for the problem at hand.
 
-![brian kernighan](http://substack.net/images/kernighan.png)
+![brian kernighan](assets/kernighan.png)
 
 ***
 
@@ -261,7 +261,7 @@ var c = 97 - 1;
 
 rs._read = function () {
     if (c >= 'z'.charCodeAt(0)) return rs.push(null);
-    
+
     setTimeout(function () {
         rs.push(String.fromCharCode(++c));
     }, 100);
@@ -316,7 +316,7 @@ process.stdin.on('readable', function () {
 ```
 
 ```
-$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume0.js 
+$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume0.js
 <Buffer 61 62 63 0a>
 <Buffer 64 65 66 0a>
 <Buffer 67 68 69 0a>
@@ -345,7 +345,7 @@ process.stdin.on('readable', function () {
 Running this example gives us incomplete data!
 
 ```
-$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume1.js 
+$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume1.js
 <Buffer 61 62 63>
 <Buffer 0a 64 65>
 <Buffer 66 0a 67>
@@ -366,7 +366,7 @@ process.stdin.on('readable', function () {
 Now our code works as expected in 3-byte chunks!
 
 ``` js
-$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume2.js 
+$ (echo abc; sleep 1; echo def; sleep 1; echo ghi) | node consume2.js
 <Buffer 61 62 63>
 <Buffer 0a 64 65>
 <Buffer 66 0a 67>
@@ -399,7 +399,7 @@ process.stdin.on('readable', function () {
 ```
 
 ```
-$ tail -n +50000 /usr/share/dict/american-english | head -n10 | node lines.js 
+$ tail -n +50000 /usr/share/dict/american-english | head -n10 | node lines.js
 'hearties'
 'heartiest'
 'heartily'
@@ -441,7 +441,7 @@ process.stdin.pipe(ws);
 ```
 
 ```
-$ (echo beep; sleep 1; echo boop) | node write0.js 
+$ (echo beep; sleep 1; echo boop) | node write0.js
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
 ```
@@ -486,7 +486,7 @@ setTimeout(function () {
 ```
 
 ```
-$ node writing1.js 
+$ node writing1.js
 $ cat message.txt
 beep boop
 ```
@@ -501,7 +501,7 @@ If you want to wait for the buffer to empty again, listen for a `'drain'` event.
 
 Transform streams are a certain type of duplex stream (both readable and writable).
 The distinction is that in Transform streams, the output is in some way calculated
-from the input. 
+from the input.
 
 You might also hear transform streams referred to as "through streams".
 
@@ -577,7 +577,7 @@ process.stdin.on('end', function () {
 ```
 
 ```
-$ (echo beep; sleep 1; echo boop) | node classic1.js 
+$ (echo beep; sleep 1; echo boop) | node classic1.js
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
 __END__
@@ -606,7 +606,7 @@ function end () {
 ```
 
 ```
-$ (echo beep; sleep 1; echo boop) | node through.js 
+$ (echo beep; sleep 1; echo boop) | node through.js
 <Buffer 62 65 65 70 0a>
 <Buffer 62 6f 6f 70 0a>
 __END__
@@ -623,7 +623,7 @@ process.stdin.pipe(concat(function (body) {
 ```
 
 ```
-$ echo '{"beep":"boop"}' | node concat.js 
+$ echo '{"beep":"boop"}' | node concat.js
 { beep: 'boop' }
 ```
 
@@ -933,7 +933,7 @@ m.on('update', function cb (key) {
     // wait until we've gotten at least one count value from the network
     if (key !== 'count') return;
     m.removeListener('update', cb);
-    
+
     setInterval(function () {
         m.set('count', Number(m.get('count')) + 1);
     }, 100);
@@ -1176,7 +1176,7 @@ sent, json-style.
 
 It's turtles all the way down!
 
-![turtles all the way](http://substack.net/images/all_the_way_down.png)
+![turtles all the way](assets/turtles.png)
 
 Since dnode works in node or on the browser over any stream it's easy to call
 functions defined anywhere and especially useful when paired up with
@@ -1349,7 +1349,7 @@ module.exports = function () {
     return through(function (line) {
         try { var row = JSON.parse(line) }
         catch (err) { return this.emit('error', err) }
-        
+
         this.queue(hyperglue(html, {
             '.who': row.who,
             '.message': row.message
